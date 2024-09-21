@@ -7,19 +7,19 @@ document.addEventListener('DOMContentLoaded', () => {
                     title: 'Título 1',
                     text: 'Texto para la primera tarjeta.',
                     imgSrc: 'https://http.cat/images/200.jpg',
-                    link: '#'
+                    link: './products/product.html'
                 },
                 { 
                     title: 'Título 2',
                     text: 'Texto para la segunda tarjeta.',
                     imgSrc: 'https://http.cat/images/201.jpg',
-                    link: '#'
+                    link: './products/product.html'
                 },
                 { 
                     title: 'Título 3',
                     text: 'Texto para la tercera tarjeta.',
                     imgSrc: 'https://http.cat/images/202.jpg',
-                    link: '#'
+                    link: './products/product.html'
                 }
             ];
 
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <h5 class="card-title">${data.title}</h5>
                             <p class="card-text">${data.text}</p>
                             <img src="${data.imgSrc}" class="card-img-top" alt="Imagen de la tarjeta">
-                            <a href="${data.link}" class="btn btn-primary">Go somewhere</a>
+                            <a href="${data.link}" class="btn btn-primary">Ver Mas</a>
                         </div>
                     </div>
                 `;
