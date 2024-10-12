@@ -630,12 +630,16 @@ document.addEventListener("DOMContentLoaded", function() {
     if (producto) {
         // Crear el contenido a mostrar
         let Contenido = `
-            <h1>Título: ${producto.producto}</h1>
-            <h3>descripcion: ${producto.descripcion}</h3>
-            <h6>Precio: $${producto.precio.toFixed(2)}</h6>
-            <img src="${producto.imgSrc}" alt="${producto.titulo}">
+            <div class="card">
+                <img src="${producto.imgSrc}" class="card-img-top" alt="Imagen de ${producto.producto}">
+                <div class="card-body">
+                    <h5 class="card-title">${producto.producto}</h5>
+                    <p class="card-text">${producto.descripcion}</p>
+                    <p class="card-text"><b>Precio: $${producto.precio.toFixed(2)}</p>
+                    <a href="./products/product.html?prod=${producto.id}" class="btn btn-primary">Ver Más</a>
+                </div>
+            </div>
         `;
-
         let mainProducto = document.getElementById("productoMain");
 
         // Insertar el contenido usando innerHTML

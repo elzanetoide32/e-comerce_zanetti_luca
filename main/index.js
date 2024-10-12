@@ -606,30 +606,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     
   ];
-
-
-
-  /*// Bucle para crear y agregar tarjetas
-  for (let i = 0; i < tarjetasData.length; i++) {
-    const data = tarjetasData[i];
-
-    // Crear el elemento tarjeta
-    const tarjeta = document.createElement("div");
-    tarjeta.className = "col-sm-6 mb-3 mb-sm-0";
-    tarjeta.innerHTML = `
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">${data.title}</h5>
-                            <p class="card-text">${data.text}</p>
-                            <img src="${data.imgSrc}" class="card-img-top" alt="Imagen de la tarjeta">
-                            <a href="${data.link}" class="btn btn-primary">Ver Mas</a>
-                        </div>
-                    </div>
-                `;
-
-    // Agregar la tarjeta al contenedor
-    contenedor.appendChild(tarjeta);
-  }*/
 // Inicializar el array vacío para las tarjetas
 const tarjetas = [];
 
@@ -652,8 +628,34 @@ tarjetas.push(
         return tarjeta;
     })
 );
-
 // Ahora puedes usar 'tarjetas' para añadirlo a tu DOM
 const contenedorTarjetas = document.getElementById('contenedorTarjetas');
 tarjetas.forEach(tarjeta => contenedorTarjetas.appendChild(tarjeta));
+//buscador
+function buscadorf() {
+  let inputBuscador = document.querySelector(".input");  
+  let filterData = tarjetasData.filter((producto) => producto.producto == inputBuscador.value);
+  let cards = filterData.map(producto =>  `
+            <div class="card">
+                <img src="${producto.imgSrc}" class="card-img-top" alt="Imagen de ${producto.producto}">
+                <div class="card-body">
+                    <h5 class="card-title">${producto.producto}</h5>
+                    <p class="card-text">${producto.descripcion}</p>
+                    <p class="card-text"><b>Precio: $${producto.precio.toFixed(2)}</p>
+                    <a href="./products/product.html?prod=${producto.id}" class="btn btn-primary">Ver Más</a>
+                </div>
+            </div>
+        `);
+  // document.querySelector(".hola").innerHTML = cards;
+
+  let mainProducto = document.getElementById("hola");
+  // Insertar el contenido usando innerHTML
+  mainProducto.innerHTML = cards;
+};
+
+let botonBuscador = document.querySelector(".boton");  
+botonBuscador.addEventListener("click", buscadorf);
+
+
+
 });
