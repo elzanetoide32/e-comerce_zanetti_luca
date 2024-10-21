@@ -1,4 +1,4 @@
-let categorias= [{
+let categorias= [{ 
     categoria:"frutas ",href:"/main/products/product.html"},{
     categoria:"verduras",href:"/main/products/product.html"},{
     categoria:"especias ",href:"/main/products/product.html"   
@@ -35,13 +35,20 @@ let menu = `<nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme=
               </div>
           </div>
         </div>
-        <div class="nav"> 
-            
-        </div>
+        <li class="nav-item dropdown">
+            <a class="text-white nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Categorias
+                </a>
+            <ul class="dropdown-menu">
+              <div class="nav">
+              
+              </div>
+            </ul>
+        </li>
       </nav>`;
 document.querySelector("header").innerHTML = menu;
 
 for(let boton of categorias){
-    array.push(`<a href="${boton.href}"> ${boton.categoria}</a>`)
+    array.push(`<li class="category dropdown-item">${boton.categoria}</li><li><hr class="dropdown-divider"></li>`)
 }
 document.querySelector('.nav').innerHTML=array;
