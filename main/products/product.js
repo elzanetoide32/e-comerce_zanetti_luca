@@ -135,6 +135,20 @@ document.addEventListener("DOMContentLoaded", function() {
                     <p class="card-text">${producto.descripcion}</p>
                     <p class="card-text"><b>Precio: $${producto.precio.toFixed(2)}</p>
                     <a href="./products/product.html?prod=${producto.id}" class="btn btn-primary">Ver Más</a>
+
+                    ${localStorage.getItem("userEmail") ?
+                    `<div class="counter-container">
+                        <button class="counter-button" onclick="decrement()">-</button>
+                        <div class="counter-display" id="counter">0</div>
+                        <button class="counter-button" onclick="increment()">+</button>
+                    </div>
+                    <div class="d-flex justify-content-between w-100">
+                      <button class="btn btn-outline-dark flex-grow-1 me-2">Comprar ahora</button>
+                    </div>                    `
+                    :`<div class="d-flex justify-content-center w-100">
+                      <a href="../login/login.html" class="btn btn-outline-dark unlogged-button">Iniciar sesión para comprar</a>
+                    </div>`
+                     }
                 </div>
             </div>
         `;
@@ -144,5 +158,20 @@ document.addEventListener("DOMContentLoaded", function() {
         mainProducto.innerHTML = Contenido;
     } else {
         document.getElementById("productoMain").innerHTML = '<p>Producto no encontrado.</p>';
+    }
+    let count = 0;
+
+    function increment() {
+        count++;
+        updateDisplay();
+    }
+
+    function decrement() {
+        count--;
+        updateDisplay();
+    }
+
+    function updateDisplay() {
+        document.getElementById('counter').innerText = count;
     }
 });

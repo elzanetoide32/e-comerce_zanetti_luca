@@ -45,6 +45,12 @@ let menu = `<nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme=
               </div>
             </ul>
         </li>
+        <div>
+        ${localStorage.getItem("userEmail") ? `<button class="btn btn btn-primary boton" type="submit" ${localStorage.getItem("userEmail")} onclick="logout()" >Cerrar sesión</button> `
+        : `<a href="./login.html"><div class="d-flex" role="iniciar secion">       
+        <button class="btn btn-primary boton" type="submit">Iniciar Sesion</button>
+              </div></a>`}
+        <div>
       </nav>`;
 document.querySelector("header").innerHTML = menu;
 
@@ -52,3 +58,7 @@ for(let boton of categorias){
     array.push(`<li class="category dropdown-item">${boton.categoria}</li><li><hr class="dropdown-divider"></li>`)
 }
 document.querySelector('.nav').innerHTML=array;
+function logout(){
+  localStorage.clear()
+  location.href = "./login.html"
+}

@@ -120,7 +120,7 @@ tarjetas.push(
                     <h5 class="card-title">${producto.producto}</h5>
                     <p class="card-text">${producto.descripcion}</p>
                     <p class="card-text"><b>Precio: $${producto.precio.toFixed(2)}</p>
-                    <a href="./products/product.html?prod=${producto.id}" class="btn btn-primary">Ver Más</a>
+                    <a href="./products/product.html?prod=${producto.id}" class="btn btn-primary">Ver Más</a>                    
                 </div>
             </div>
         `;
@@ -182,5 +182,18 @@ let busqueda = dataFiltered.map((producto) => {
 }) 
 document.querySelector(".conteiner").innerHTML = busqueda.join("");
 };
+let count = 0;
+        
+    function increment() {
+        count++;
+        document.getElementById("counter").innerText = count;
+    }
+
+    function decrement() {
+    if (count > 0) {
+        count--;
+        document.getElementById("counter").innerText = count;
+    }
+  }
 
 });
