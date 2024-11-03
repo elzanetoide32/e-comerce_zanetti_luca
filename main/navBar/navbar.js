@@ -46,7 +46,9 @@ let menu = `<nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme=
             </ul>
         </li>
         <div>
-        ${localStorage.getItem("userEmail") ? `<button class="btn btn btn-primary boton" type="submit" ${localStorage.getItem("userEmail")} onclick="logout()" >Cerrar sesión</button> `
+        ${localStorage.getItem("userEmail") ? `<button class="btn btn btn-primary boton" type="submit" ${localStorage.getItem("userEmail")}
+        <a href="cart.html"><img height="25" src="cart.png"> <b class="colortexto" id="quantity">${localStorage.getItem("quantity")}</b></a>
+         onclick="logout()" >Cerrar sesión</button> `
         : `<a href="./login.html"><div class="d-flex" role="iniciar secion">       
         <button class="btn btn-primary boton" type="submit">Iniciar Sesion</button>
               </div></a>`}
