@@ -107,29 +107,41 @@ document.addEventListener("DOMContentLoaded", () => {
   ];
 // Inicializar el array vacío para las tarjetas
 const tarjetas = [];
+function MostrarCards(){  
+  // Mapear los datos a un marcado HTML con Bootstrap
+  tarjetas.push(
+      ...tarjetasData.map(producto => {
+          const tarjeta = document.createElement('div');
+          tarjeta.className = "col-sm-6 mb-3 mb-sm-0";
+          tarjeta.innerHTML = `
+              <div class="card">
+                  <img src="${producto.imgSrc}" class="card-img-top" alt="Imagen de ${producto.producto}">
+                  <div class="card-body">
+                      <h5 class="card-title">${producto.producto}</h5>
+                      <p class="card-text">${producto.descripcion}</p>
+                      <p class="card-text"><b>Precio: $${producto.precio.toFixed(2)}</p>
+                      <a href="./products/product.html?prod=${producto.id}" class="btn btn-primary">Ver Más</a>                    
+                  </div>
+              </div>
+          `;
+          return tarjeta;
+      })
+  );
+  // Ahora puedes usar 'tarjetas' para añadirlo a tu DOM
+  const contenedorTarjetas = document.querySelector("section");
+  tarjetas.forEach(tarjeta => contenedorTarjetas.appendChild(tarjeta));
+}
 
-// Mapear los datos a un marcado HTML con Bootstrap
-tarjetas.push(
-    ...tarjetasData.map(producto => {
-        const tarjeta = document.createElement('div');
-        tarjeta.className = "col-sm-6 mb-3 mb-sm-0";
-        tarjeta.innerHTML = `
-            <div class="card">
-                <img src="${producto.imgSrc}" class="card-img-top" alt="Imagen de ${producto.producto}">
-                <div class="card-body">
-                    <h5 class="card-title">${producto.producto}</h5>
-                    <p class="card-text">${producto.descripcion}</p>
-                    <p class="card-text"><b>Precio: $${producto.precio.toFixed(2)}</p>
-                    <a href="./products/product.html?prod=${producto.id}" class="btn btn-primary">Ver Más</a>                    
-                </div>
-            </div>
-        `;
-        return tarjeta;
-    })
-);
-// Ahora puedes usar 'tarjetas' para añadirlo a tu DOM
-const contenedorTarjetas = document.getElementById('contenedorTarjetas');
-tarjetas.forEach(tarjeta => contenedorTarjetas.appendChild(tarjeta));
+
+const promise = new Promise ((resolve, reject) => {
+  setTimeout(() => {
+    resolve("Cargado")
+  }, 5000)
+})
+
+promise.then(() => MostrarCards());
+
+
 //buscador
 function buscadorf() {
   let inputBuscador = document.querySelector(".input");  
@@ -151,6 +163,7 @@ function buscadorf() {
   // Insertar el contenido usando innerHTML
   mainProducto.innerHTML = cards;
 };
+
 
 let botonBuscador = document.querySelector(".boton");  
 botonBuscador.addEventListener("click", buscadorf);
